@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	<!-- java.util.log initialization -->
+	<bean id="julOverSlf4j" class="fr.smile.birt.JulOverSlfConfigurer" init-method="init" />
+	<!-- Resource locator -->
+	<bean id="birtResourceLocator" class="fr.smile.birt.ResourceLocator">
+		<property name="defaultReportsDir" value="classpath:/report" />
+		<property name="defaultLibraryDir" value="classpath:/report" />
+		<property name="defaultLocaleDir" value="classpath:/report/locale" />
+		<property name="defaultImagesDir" value="classpath:/report" />
+	</bean>
+	<!-- Report engine -->
+	<bean id="engineConfig" class="org.eclipse.birt.report.engine.api.EngineConfig">
+		<property name="resourceLocator" ref="birtResourceLocator" />
+	</bean>
+	<bean id="reportEngine" class="org.eclipse.birt.report.engine.api.ReportEngine">
+		<constructor-arg ref="engineConfig" />
+	</bean>
+	<!-- Renderer -->
+	<bean id="reportRenderer" class="fr.smile.birt.Renderer">
+		<property name="reportEngine" ref="reportEngine" />
+		<property name="designResources" ref="reportDesignMap" />
+	</bean>
+</beans>
