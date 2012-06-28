@@ -26,29 +26,25 @@ public class SimpleTest extends BaseReportTestCase {
 	@Test
 	public void renderXls() {
 		LOGGER.debug("renderXls");
-		// FIXME XLS : MS office format doesn't seem to work
-		// render(IRenderer.XLS);
+		render(IRenderer.XLS);
 	}
 
 	@Test
 	public void renderDoc() {
 		LOGGER.debug("renderDoc");
-		// FIXME DOC :MS office format doesn't seem to work
-		// render(IRenderer.DOC);
+		render(IRenderer.DOC);
 	}
 
 	@Test
 	public void renderOdp() {
 		LOGGER.debug("renderOdp");
-		// FIXME ODP : java.io.IOException: Stream closed
-		// render(IRenderer.ODP);
+		render(IRenderer.ODP);
 	}
 
 	@Test
 	public void renderOds() {
 		LOGGER.debug("renderOds");
-		// FIXME ODS : java.io.IOException: Stream closed
-		// render(IRenderer.ODS);
+		render(IRenderer.ODS);
 	}
 
 	@Test
@@ -61,7 +57,6 @@ public class SimpleTest extends BaseReportTestCase {
 	@Test
 	public void renderOdt() {
 		LOGGER.debug("renderOdt");
-		// FIXME ODT : java.io.IOException: Stream closed
-		// render(IRenderer.ODT);
+		render(IRenderer.ODT);
 	}
 }

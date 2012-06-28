@@ -63,9 +63,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.birt.runtime.3_7_1</groupId>
+			<groupId>org.eclipse.birt.runtime</groupId>
 			<artifactId>org.eclipse.birt.runtime</artifactId>
-			<version>3.7.1</version>
+			<version>4.2.0</version>
 		</dependency>
 	</dependencies>
 	<build>
