@@ -9,6 +9,7 @@
 				<entry key="simple_with_shared_image" value="classpath:/report/simple_with_shared_image.rptdesign" />
 				<entry key="parameters" value="classpath:/report/parameters.rptdesign" />
 				<entry key="graph" value="classpath:/report/graph.rptdesign" />
+				<entry key="simple_with_library" value="classpath:/report/simple_with_library.rptdesign" />
 			</map>
 		</constructor-arg>
 	</bean>
