@@ -10,7 +10,6 @@ public class GraphTest extends BaseReportTestCase {
 	@Test
 	public void renderPdf() {
 		LOGGER.debug("renderPdf");
-		// TODO graph report
 		render("graph", IRenderer.PDF);
 	}
 }
