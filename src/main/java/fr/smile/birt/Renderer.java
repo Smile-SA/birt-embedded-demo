@@ -5,6 +5,8 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.eclipse.birt.report.engine.api.EmitterInfo;
 import org.eclipse.birt.report.engine.api.EngineConstants;
 import org.eclipse.birt.report.engine.api.EngineException;
@@ -20,17 +22,17 @@ import org.eclipse.birt.report.model.api.DesignFileException;
 import org.eclipse.birt.report.model.api.activity.SemanticException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.Resource;
 
 public class Renderer implements IRenderer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Renderer.class);
+	@Resource
 	private IReportEngine reportEngine;
-	private Map<String, Resource> designResources;
+	private Map<String, org.springframework.core.io.Resource> designResources;
 
 	@Override
 	public IRunAndRenderTask getRunAndRenderTask(String designName) throws EngineException, DesignFileException, SemanticException, IOException, TechnicalException {
 		LOGGER.debug("getDesign rptDesign={}", designName);
-		Resource designResource = designResources.get(designName);
+		org.springframework.core.io.Resource designResource = designResources.get(designName);
 		if (designResource == null) {
 			throw new TechnicalException("design " + designName + " is not available");
 		}
@@ -116,19 +118,11 @@ public class Renderer implements IRenderer {
 	}
 
 	/* GETTER AND SETTER */
-	public IReportEngine getReportEngine() {
-		return reportEngine;
-	}
-
-	public void setReportEngine(IReportEngine reportEngine) {
-		this.reportEngine = reportEngine;
-	}
-
-	public Map<String, Resource> getDesignResources() {
+	public Map<String, org.springframework.core.io.Resource> getDesignResources() {
 		return designResources;
 	}
 
-	public void setDesignResources(Map<String, Resource> designResources) {
+	public void setDesignResources(Map<String, org.springframework.core.io.Resource> designResources) {
 		this.designResources = designResources;
 	}
 }

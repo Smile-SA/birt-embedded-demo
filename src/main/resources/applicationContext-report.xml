@@ -18,7 +18,6 @@
 	</bean>
 	<!-- Renderer -->
 	<bean id="reportRenderer" class="fr.smile.birt.Renderer">
-		<property name="reportEngine" ref="reportEngine" />
 		<property name="designResources" ref="reportDesignMap" />
 	</bean>
 </beans>
