@@ -12,7 +12,9 @@
 			<property name="disabledMetadataBidiFormatStr" value="" />
 			<property name="contentBidiFormatStr" value="ILYNN" />
 			<property name="odaURL"
-				value="jdbc:h2:mem:formea_db;INIT=RUNSCRIPT FROM '/home/rogon/_projets/GITHUB/birt-embedded-demo/src/main/resources/report/sql/init.sql';DB_CLOSE_DELAY=-1" />
+				value="jdbc:h2:mem:formea_db;INIT=\
+				RUNSCRIPT FROM '/home/rogon/_projets/GITHUB/birt-embedded-demo/src/main/resources/report/sql/init.sql'\;
+				;DB_CLOSE_DELAY=-1" />
 			<property name="disabledContentBidiFormatStr" value="" />
 		</baseproperties>
 	</profile>
