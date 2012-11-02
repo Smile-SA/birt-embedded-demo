@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.2.1.v201209101448 Build &lt;4.2.1.v20120912-1721></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="TestH2" id="5">
+            <property name="OdaConnProfileName">TestH2</property>
+            <property name="OdaConnProfileStorePath">src/main/resources/report/connectionProfileStore/MyConnectionProfile.xml</property>
+        </oda-data-source>
+    </data-sources>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3"/>
+    </page-setup>
+</library>

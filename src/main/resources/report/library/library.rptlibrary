@@ -3,24 +3,6 @@
     <property name="createdBy">Eclipse BIRT Designer Version 4.2.1.v201209101448 Build &lt;4.2.1.v20120912-1721></property>
     <property name="units">in</property>
     <property name="theme">defaultTheme</property>
-    <data-sources>
-        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="MyDataSource" id="5">
-            <text-property name="displayName"></text-property>
-            <list-property name="privateDriverProperties">
-                <ex-property>
-                    <name>contentBidiFormatStr</name>
-                    <value>ILYNN</value>
-                </ex-property>
-                <ex-property>
-                    <name>metadataBidiFormatStr</name>
-                    <value>ILYNN</value>
-                </ex-property>
-            </list-property>
-            <property name="odaDriverClass">org.eclipse.birt.report.data.oda.sampledb.Driver</property>
-            <property name="odaURL">jdbc:classicmodels:sampledb</property>
-            <property name="odaUser">ClassicModels</property>
-        </oda-data-source>
-    </data-sources>
     <themes>
         <theme name="defaultTheme" id="4"/>
     </themes>

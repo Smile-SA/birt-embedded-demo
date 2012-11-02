@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 	<!-- Report designs -->
-	<bean id="reportDesignMap" class="java.util.HashMap">
+	<bean id="designResourcesMap" class="java.util.HashMap">
 		<constructor-arg>
 			<map>
 				<entry key="simple" value="classpath:/report/simple.rptdesign" />
@@ -10,6 +10,14 @@
 				<entry key="parameters" value="classpath:/report/parameters.rptdesign" />
 				<entry key="graph" value="classpath:/report/graph.rptdesign" />
 				<entry key="simple_with_library" value="classpath:/report/simple_with_library.rptdesign" />
+				<entry key="library_with_connectionprofile" value="classpath:/report/library_with_connectionprofile.rptdesign" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="connectionProfilesMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="TestH2" value="classpath:/report/connectionProfileStore/MyConnectionProfile.xml" />
 			</map>
 		</constructor-arg>
 	</bean>

@@ -2,6 +2,7 @@ package fr.smile.birt;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 import org.eclipse.birt.report.engine.api.PDFRenderOption;
 import org.eclipse.birt.report.engine.api.RenderOption;
+import org.eclipse.birt.report.model.api.DataSourceHandle;
+import org.eclipse.birt.report.model.api.DesignElementHandle;
 import org.eclipse.birt.report.model.api.DesignFileException;
 import org.eclipse.birt.report.model.api.activity.SemanticException;
 import org.slf4j.Logger;
@@ -27,17 +30,35 @@ public class Renderer implements IRenderer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Renderer.class);
 	@Resource
 	private IReportEngine reportEngine;
-	private Map<String, org.springframework.core.io.Resource> designResources;
+	private Map<String, org.springframework.core.io.Resource> designResources = new HashMap<String, org.springframework.core.io.Resource>();
+	private Map<String, URL> connectionProfiles = new HashMap<String, URL>();
 
-	@Override
-	public IRunAndRenderTask getRunAndRenderTask(String designName) throws EngineException, DesignFileException, SemanticException, IOException, TechnicalException {
-		LOGGER.debug("getDesign rptDesign={}", designName);
+	private IReportRunnable getReportRunnable(String designName) throws EngineException, IOException {
 		org.springframework.core.io.Resource designResource = designResources.get(designName);
 		if (designResource == null) {
 			throw new TechnicalException("design " + designName + " is not available");
 		}
 		LOGGER.debug("getDesign designName={}", designResource.getFilename());
-		IReportRunnable reportRunnable = reportEngine.openReportDesign(designResource.getInputStream());
+		return reportEngine.openReportDesign(designResource.getInputStream());
+	}
+
+	private void handleConnectionProfile(IReportRunnable reportRunnable) throws SemanticException {
+		DesignElementHandle designElementHandle = reportRunnable.getDesignHandle();
+		for (String dataSourceName : connectionProfiles.keySet()) {
+			DataSourceHandle dataSource = designElementHandle.getRoot().findDataSource(dataSourceName);
+			if (dataSource != null) {
+				String path = connectionProfiles.get(dataSourceName).getPath();
+				LOGGER.debug("path for design [{}] : [{}]", new Object[] { dataSourceName, path });
+				dataSource.setStringProperty("OdaConnProfileStorePath", path);
+			}
+		}
+	}
+
+	@Override
+	public IRunAndRenderTask getRunAndRenderTask(String designName) throws EngineException, DesignFileException, SemanticException, IOException, TechnicalException {
+		LOGGER.debug("getDesign rptDesign={}", designName);
+		IReportRunnable reportRunnable = getReportRunnable(designName);
+		handleConnectionProfile(reportRunnable);
 		return reportEngine.createRunAndRenderTask(reportRunnable);
 	}
 
@@ -124,5 +145,13 @@ public class Renderer implements IRenderer {
 
 	public void setDesignResources(Map<String, org.springframework.core.io.Resource> designResources) {
 		this.designResources = designResources;
+	}
+
+	public Map<String, URL> getConnectionProfiles() {
+		return connectionProfiles;
+	}
+
+	public void setConnectionProfiles(Map<String, URL> connectionProfiles) {
+		this.connectionProfiles = connectionProfiles;
 	}
 }
