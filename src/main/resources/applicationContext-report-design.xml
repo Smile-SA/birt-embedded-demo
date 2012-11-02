@@ -17,7 +17,7 @@
 	<bean id="connectionProfilesMap" class="java.util.HashMap">
 		<constructor-arg>
 			<map>
-				<entry key="TestH2" value="classpath:/report/connectionProfileStore/MyConnectionProfile.xml" />
+				<entry key="TestH2" value="classpath:/report/connectionProfileStore/MyConnectionProfile-basedir.xml" />
 			</map>
 		</constructor-arg>
 	</bean>

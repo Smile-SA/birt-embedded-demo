@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DataTools.ServerProfiles version="1.0">
+	<profile autoconnect="No" desc=""
+		id="528b4800-237d-11e2-b3e8-e6ab107c2c34" name="TestH2"
+		providerID="org.eclipse.birt.report.data.oda.jdbc">
+		<baseproperties>
+			<property name="odaUser" value="" />
+			<property name="metadataBidiFormatStr" value="ILYNN" />
+			<property name="odaDriverClass" value="org.h2.Driver" />
+			<property name="odaJndiName" value="" />
+			<property name="odaPassword" value="" />
+			<property name="disabledMetadataBidiFormatStr" value="" />
+			<property name="contentBidiFormatStr" value="ILYNN" />
+			<property name="odaURL"
+				value="jdbc:h2:mem:formea_db;INIT=\
+				RUNSCRIPT FROM '${basedir}/src/main/resources/report/sql/init.sql'\;
+				;DB_CLOSE_DELAY=-1" />
+			<property name="disabledContentBidiFormatStr" value="" />
+		</baseproperties>
+	</profile>
+</DataTools.ServerProfiles>
