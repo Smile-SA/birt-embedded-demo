@@ -6,10 +6,13 @@ import java.util.Map;
 
 import org.eclipse.birt.report.model.api.IResourceLocator;
 import org.eclipse.birt.report.model.api.ModuleHandle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.core.io.Resource;
 
 public class ResourceLocator implements IResourceLocator {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ResourceLocator.class);
 	private Resource defaultReportsDir;
 	private Resource defaultLibraryDir;
 	private Resource defaultLocaleDir;
@@ -32,6 +35,9 @@ public class ResourceLocator implements IResourceLocator {
 			break;
 		case IResourceLocator.IMAGE:
 			defaultRes = defaultImagesDir;
+			break;
+		default:
+			LOGGER.warn("This type is not managed : {}", type);
 			break;
 		}
 		return findResource(fileName, defaultRes);

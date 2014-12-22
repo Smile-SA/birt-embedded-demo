@@ -69,16 +69,15 @@
 			<artifactId>org.eclipse.birt.runtime</artifactId>
 			<version>${birt.version}</version>
 		</dependency>
-		<!-- org.eclipse.core.jobs used to be a transitive dependence for org.eclipse.birt.runtime -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.eclipse.birt.runtime</groupId> -->
-		<!-- <artifactId>org.eclipse.core.jobs</artifactId> -->
-		<!-- <version>3.5.300.v20130429-1813</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
 		</dependency>
 	</dependencies>
 	<build>

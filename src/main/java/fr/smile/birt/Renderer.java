@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
+import javax.inject.Inject;
 
 import org.eclipse.birt.report.engine.api.EmitterInfo;
 import org.eclipse.birt.report.engine.api.EngineConstants;
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 
 public class Renderer implements IRenderer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Renderer.class);
-	@Resource
+	@Inject
 	private IReportEngine reportEngine;
 	private Map<String, org.springframework.core.io.Resource> designResources = new HashMap<String, org.springframework.core.io.Resource>();
 	private Map<String, URL> connectionProfiles = new HashMap<String, URL>();
@@ -69,7 +69,7 @@ public class Renderer implements IRenderer {
 
 	private IRenderOption getRenderOptions(String type) {
 		IRenderOption result = new RenderOption();
-		if (type.equalsIgnoreCase("html")) {
+		if ("html".equalsIgnoreCase(type)) {
 			HTMLRenderOption htmlOptions = new HTMLRenderOption();
 			htmlOptions.setImageDirectory("img");
 			htmlOptions.setHtmlPagination(false);
@@ -77,7 +77,7 @@ public class Renderer implements IRenderer {
 			htmlOptions.setEmbeddable(false);
 			htmlOptions.setSupportedImageFormats("PNG");
 			result = htmlOptions;
-		} else if (type.equalsIgnoreCase("pdf")) {
+		} else if ("pdf".equalsIgnoreCase(type)) {
 			PDFRenderOption pdfOptions = new PDFRenderOption();
 			pdfOptions.setOption(IPDFRenderOption.PAGE_OVERFLOW, IPDFRenderOption.FIT_TO_PAGE_SIZE);
 			pdfOptions.setOption(IPDFRenderOption.PAGE_OVERFLOW, IPDFRenderOption.OUTPUT_TO_MULTIPLE_PAGES);
